@@ -4,16 +4,16 @@
   "info": {
     "singularName": "solution",
     "pluralName": "solutions",
-    "displayName": "solution"
+    "displayName": "Solution"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "headline": {
+    "Headline": {
       "type": "string"
     },
-    "image": {
+    "Image": {
       "allowedTypes": [
         "images",
         "files",
