@@ -15,13 +15,14 @@
     "@strapi/plugin-cloud": "5.11.0",
     "@strapi/plugin-graphql": "^5.13.0",
     "@strapi/plugin-users-permissions": "5.11.0",
-    "@strapi/strapi": "5.11.0",
+    "@strapi/strapi": "^5.13.0",
     "better-sqlite3": "11.3.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-llm-translator": "^0.9.5",
     "styled-components": "^6.0.0"
   },
   "engines": {

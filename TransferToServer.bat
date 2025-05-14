@@ -1,0 +1,1 @@
+npm run strapi transfer -- --to https://tranquil-splendor-6178163d3f.strapiapp.com/admin
