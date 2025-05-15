@@ -513,6 +513,64 @@ export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSubStateSubState extends Struct.CollectionTypeSchema {
+  collectionName: 'sub_states';
+  info: {
+    displayName: 'SubState';
+    pluralName: 'sub-states';
+    singularName: 'sub-state';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sub-state.sub-state'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    systemname: Schema.Attribute.String & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSuperStateSuperState extends Struct.CollectionTypeSchema {
+  collectionName: 'super_states';
+  info: {
+    displayName: 'SuperState';
+    pluralName: 'super-states';
+    singularName: 'super-state';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::super-state.super-state'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    systemname: Schema.Attribute.String & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1026,6 +1084,8 @@ declare module '@strapi/strapi' {
       'api::challenge.challenge': ApiChallengeChallenge;
       'api::global.global': ApiGlobalGlobal;
       'api::solution.solution': ApiSolutionSolution;
+      'api::sub-state.sub-state': ApiSubStateSubState;
+      'api::super-state.super-state': ApiSuperStateSuperState;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

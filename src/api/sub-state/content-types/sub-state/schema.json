@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_states",
+  "info": {
+    "singularName": "sub-state",
+    "pluralName": "sub-states",
+    "displayName": "SubState"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "unique": true
+    },
+    "systemname": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

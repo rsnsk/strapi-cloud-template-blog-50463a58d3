@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "super_states",
+  "info": {
+    "singularName": "super-state",
+    "pluralName": "super-states",
+    "displayName": "SuperState"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "unique": true
+    },
+    "systemname": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}
