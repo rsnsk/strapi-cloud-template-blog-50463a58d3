@@ -5,13 +5,6 @@ const path = require('path');
 const mime = require('mime-types');
 const { categories, authors, articles, global, about } = require('../data/data.json');
 
-//start rsnsk
-
-process.env.LLM_TRANSLATOR_LLM_API_KEY='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';
-process.env.STRAPI_ADMIN_LLM_TRANSLATOR_LLM_BASE_URL='https://api.groq.com/openai/v1';
-process.env.STRAPI_ADMIN_LLM_TRANSLATOR_LLM_MODEL='meta-llama/llama-4-scout-17b-16e-instruct';
-
-//end rsnsk
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
