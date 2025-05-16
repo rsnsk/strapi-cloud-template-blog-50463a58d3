@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_tia_slides",
+  "info": {
+    "displayName": "Slide",
+    "icon": "slideshow"
+  },
+  "options": {},
+  "attributes": {
+    "MediaType": {
+      "type": "enumeration",
+      "enum": [
+        "Image",
+        "Video"
+      ],
+      "default": "Image"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Video": {
+      "allowedTypes": [
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

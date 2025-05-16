@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slideshow2s",
+  "info": {
+    "singularName": "slideshow2",
+    "pluralName": "slideshow2s",
+    "displayName": "Slideshow2"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slide": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tia.slide"
+    }
+  }
+}

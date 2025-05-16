@@ -16,6 +16,11 @@
     }
   },
   "attributes": {
+    "sub_state": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sub-state.sub-state"
+    },
     "Headline": {
       "type": "string",
       "pluginOptions": {
@@ -24,21 +29,15 @@
         }
       }
     },
-    "Copy": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Name": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

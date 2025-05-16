@@ -50,6 +50,20 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSingleChallenge extends Struct.ComponentSchema {
+  collectionName: 'components_shared_single_challenges';
+  info: {
+    displayName: 'SingleChallenge';
+  };
+  attributes: {
+    Headline: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -62,6 +76,20 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface TiaSlide extends Struct.ComponentSchema {
+  collectionName: 'components_tia_slides';
+  info: {
+    displayName: 'Slide';
+    icon: 'slideshow';
+  };
+  attributes: {
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    MediaType: Schema.Attribute.Enumeration<['Image', 'Video']> &
+      Schema.Attribute.DefaultTo<'Image'>;
+    Video: Schema.Attribute.Media<'files' | 'videos'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -69,7 +97,9 @@ declare module '@strapi/strapi' {
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
+      'shared.single-challenge': SharedSingleChallenge;
       'shared.slider': SharedSlider;
+      'tia.slide': TiaSlide;
     }
   }
 }

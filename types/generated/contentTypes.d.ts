@@ -419,12 +419,6 @@ export interface ApiChallengeChallenge extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    Copy: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -434,18 +428,17 @@ export interface ApiChallengeChallenge extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::challenge.challenge'
     >;
-    Name: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     publishedAt: Schema.Attribute.DateTime;
+    sub_state: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::sub-state.sub-state'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -484,6 +477,73 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiSlideshowSlideshow extends Struct.CollectionTypeSchema {
+  collectionName: 'slideshows';
+  info: {
+    description: '';
+    displayName: 'Slideshow';
+    pluralName: 'slideshows';
+    singularName: 'slideshow';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::slideshow.slideshow'
+    >;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slides: Schema.Attribute.Component<'tia.slide', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSlideshow2Slideshow2 extends Struct.CollectionTypeSchema {
+  collectionName: 'slideshow2s';
+  info: {
+    displayName: 'Slideshow2';
+    pluralName: 'slideshow2s';
+    singularName: 'slideshow2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::slideshow2.slideshow2'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Slide: Schema.Attribute.Component<'tia.slide', true>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
   collectionName: 'solutions';
   info: {
@@ -516,6 +576,7 @@ export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
 export interface ApiSubStateSubState extends Struct.CollectionTypeSchema {
   collectionName: 'sub_states';
   info: {
+    description: '';
     displayName: 'SubState';
     pluralName: 'sub-states';
     singularName: 'sub-state';
@@ -535,6 +596,15 @@ export interface ApiSubStateSubState extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
+    slideshow_2: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::slideshow2.slideshow2'
+    >;
+    solution: Schema.Attribute.Relation<'oneToOne', 'api::solution.solution'>;
+    super_state: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::super-state.super-state'
+    >;
     systemname: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -545,6 +615,7 @@ export interface ApiSubStateSubState extends Struct.CollectionTypeSchema {
 export interface ApiSuperStateSuperState extends Struct.CollectionTypeSchema {
   collectionName: 'super_states';
   info: {
+    description: '';
     displayName: 'SuperState';
     pluralName: 'super-states';
     singularName: 'super-state';
@@ -564,6 +635,10 @@ export interface ApiSuperStateSuperState extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
+    sub_states: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sub-state.sub-state'
+    >;
     systemname: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1083,6 +1158,8 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::challenge.challenge': ApiChallengeChallenge;
       'api::global.global': ApiGlobalGlobal;
+      'api::slideshow.slideshow': ApiSlideshowSlideshow;
+      'api::slideshow2.slideshow2': ApiSlideshow2Slideshow2;
       'api::solution.solution': ApiSolutionSolution;
       'api::sub-state.sub-state': ApiSubStateSubState;
       'api::super-state.super-state': ApiSuperStateSuperState;

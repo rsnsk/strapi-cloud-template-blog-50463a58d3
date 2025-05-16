@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slideshows",
+  "info": {
+    "singularName": "slideshow",
+    "pluralName": "slideshows",
+    "displayName": "Slideshow",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tia.slide"
+    },
+    "Name": {
+      "type": "string"
+    }
+  }
+}

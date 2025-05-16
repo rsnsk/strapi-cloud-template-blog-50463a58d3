@@ -4,7 +4,8 @@
   "info": {
     "singularName": "super-state",
     "pluralName": "super-states",
-    "displayName": "SuperState"
+    "displayName": "SuperState",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,6 +18,12 @@
     "systemname": {
       "type": "string",
       "unique": true
+    },
+    "sub_states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-state.sub-state",
+      "mappedBy": "super_state"
     }
   }
 }

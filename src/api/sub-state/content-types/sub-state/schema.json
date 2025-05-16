@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sub-state",
     "pluralName": "sub-states",
-    "displayName": "SubState"
+    "displayName": "SubState",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,6 +18,22 @@
     "systemname": {
       "type": "string",
       "unique": true
+    },
+    "super_state": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::super-state.super-state",
+      "inversedBy": "sub_states"
+    },
+    "solution": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::solution.solution"
+    },
+    "slideshow_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::slideshow2.slideshow2"
     }
   }
 }
